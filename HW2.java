@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 /**
  * @author TODO: please add student ID and name here
+ * B0544133 陳佳瑩 資管二甲
  * Try to write some comments for your codes (methods, 15 points)
+ * 發牌
  */
 public class HW2 {
 
@@ -26,8 +28,8 @@ public class HW2 {
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards 所有的牌
-	 * @param nDeck 總共有幾副牌
+	 * @param allCards �������
+	 * @param nDeck 蝮賢��嗾����
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -77,24 +79,39 @@ class Deck{
 		//Card card=new Card(1,1); ->means new card as clubs ace
 		//cards.add(card);
 		//Sample code end
-
+		for(int i = 1 ; i <= nDeck ; i++ ) // 要給幾(nDeck)副牌 
+		 {
+			 for(int x = 1 ; x <= 4 ; x++ ) //花色(Clubs=1, Diamonds=2, Hearts=3, Spades=4)
+			 {
+				 for(int k = 1 ;  k <= 13 ; k++ ) //牌上面的數(1~13)
+				 {
+					 Card card = new Card (x,k) ;
+					 cards.add(card); // 
+				 }
+			 }
+		 }
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
 	public void printDeck(){
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
-
+		for (int n = 0 ; n < cards.size() ; n++)
+		{
+			cards.get(n).printCard();
+		}
 	}
+	
 	public ArrayList<Card> getAllCards(){
 		return cards;
 	}
 }
 /**
  * Description: TODO: please add description here
+ * 這個for迴圈是把card 的deck 一個一個print出來
  */
 class Card{
 	private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4
-	private int rank; //1~13
+	private int rank; //1~13，1 = Aces, 11 = JECK , 12 = QUEEN , 13 = KING
 	/**
 	 * @param s suit
 	 * @param r rank
@@ -102,10 +119,20 @@ class Card{
 	public Card(int s,int r){
 		suit=s;
 		rank=r;
+	
+	
 	}	
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
+	
+	private String[] suitsuit = { "Clubs", "Diamonds", "Hearts", "Spades" };
+	private String[] rankrank = { "Aces","2","3","4","5","6","7","8","9","10","JACK","QUEEN","KING" };
+	
 	public void printCard(){
 		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
+		/*
+       //* display ndeck 副牌，suitsuit為花色，rankrank為牌數
+        */
+		System.out.println( suitsuit[suit-1] + " , " + rankrank[rank-1] );
 
 	}
 	public int getSuit(){
